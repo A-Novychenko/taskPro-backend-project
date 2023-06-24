@@ -7,17 +7,17 @@ require("dotenv").config();
 
 const app = express();
 
-const {DB_HOST, PORT = 3001} = process.env;
+const { DB_HOST, PORT = 3001 } = process.env;
 
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
-// const authRouter = require("./routes/api/auth");
+const authRouter = require("./routes/api/auth");
 // const tasksRouter = require("./routes/api/tasks");
 
 app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
 
-// app.use("/api/users", authRouter);
+app.use("/api/auth", authRouter);
 // app.use("/api/tasks", tasksRouter);
 app.use(express.static("public"));
 
@@ -30,10 +30,10 @@ app.use((_, res, __) => {
   });
 });
 
-const {createErrorReq} = require("./helpers");
+const { createErrorReq } = require("./helpers");
 app.use((err, req, res, next) => {
-  const {status = 500, message = "Server error"} = err;
-  const {statusText, codeErr, messageDescr, dataDescr} = createErrorReq(
+  const { status = 500, message = "Server error" } = err;
+  const { statusText, codeErr, messageDescr, dataDescr } = createErrorReq(
     status,
     message
   );
