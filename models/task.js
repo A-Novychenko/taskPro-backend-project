@@ -1,13 +1,22 @@
-const {handleMongooseError} = require("../helpers");
+const { Schema, model } = require("mongoose");
+// const Joi = require("joi");
 
-// const taskMongooseSchema =
+const { handleMongooseError } = require("../helpers");
 
-// taskMongooseSchema.post("save", handleMongooseError);
+const taskMongooseSchema = new Schema();
 
-const schemas = {
-  // Joi schemas
-};
+taskMongooseSchema.post("save", handleMongooseError);
+
+// const taskAddSchema = Joi.object({
+
+// });
+
+// const updateFavoriteSchema = Joi.object({
+//   favorite: Joi.boolean().required(),
+// });
+
+const schemas = {};
 
 const Task = model("task", taskMongooseSchema);
 
-module.exports = {schemas, Task};
+module.exports = { schemas, Task };
