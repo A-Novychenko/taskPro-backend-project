@@ -20,16 +20,16 @@ const userSchema = new Schema(
       required: [true, "Email is required"],
       unique: true,
     },
-    // thema: {
-    //   type: String,
-    //   enum: ["dark", "light", "violet"],
-    //   required: true,
-    //   default: "dark",
-    // },
-    // avatarURL: {
-    //   type: String,
-    //   required: true,
-    // },
+    thema: {
+      type: String,
+      enum: ["dark", "light", "violet"],
+      required: true,
+      default: "dark",
+    },
+    avatarURL: {
+      type: String,
+      required: true,
+    },
     token: {
       type: String,
       default: "",
