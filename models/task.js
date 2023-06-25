@@ -18,6 +18,8 @@ const taskSchema = new Schema({
   },
   deadline: {
     type: Date,
+    default: Date.now,
+    require: true,
   },
   owner: {
         type: Schema.Types.ObjectId,  
