@@ -12,8 +12,8 @@ const {
   deleteColumn,
   getTasks,
   addTask,
-  // deleteTask,
-  // updateTask,
+  deleteTask,
+  updateTask,
 } = require("../../controller/tasks");
 
 const {authenticate} = require("../../middlewares");
@@ -54,7 +54,16 @@ router.post(
   validateBody(schemas.taskJoiSchema),
   addTask
 );
-// router.put("/:boardId/columns/:columnId/tasks/:taskId", authenticate, validateBody(schemas.taskJoiSchema), updateTask);
-// router.delete("/:boardId/columns/:columnId/tasks/:taskId", authenticate, deleteTask);
+router.put(
+  "/:boardId/columns/:columnId/tasks/:taskId",
+  authenticate,
+  validateBody(schemas.taskJoiSchema),
+  updateTask
+);
+router.delete(
+  "/:boardId/columns/:columnId/tasks/:taskId",
+  authenticate,
+  deleteTask
+);
 
 module.exports = router;
