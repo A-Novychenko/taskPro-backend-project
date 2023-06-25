@@ -1,4 +1,3 @@
-// const { controllerWrapper } = require("../../helpers");
 const bcrypt = require("bcrypt");
 
 const gravatar = require("gravatar");
