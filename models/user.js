@@ -23,7 +23,7 @@ const userSchema = new Schema(
     thema: {
       type: String,
       enum: ["dark", "light", "violet"],
-      required: true,
+      required: false,
       default: "dark",
     },
     avatarURL: {
@@ -52,9 +52,14 @@ const loginSchema = Joi.object({
   password: Joi.string().min(6).required(),
 });
 
+const themaSchema = Joi.object({
+  thema: Joi.string().required(),
+});
+
 const schemas = {
   registerSchema,
   loginSchema,
+  themaSchema,
 };
 
 const User = model("user", userSchema);
