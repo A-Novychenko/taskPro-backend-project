@@ -13,14 +13,14 @@ const { DB_HOST, PORT = 3001 } = process.env;
 
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 const authRouter = require("./routes/api/auth");
-// const tasksRouter = require("./routes/api/tasks");
+const boardsRouter = require("./routes/api/boards");
 
 app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
 
 app.use("/api/auth", authRouter);
-// app.use("/api/tasks", tasksRouter);
+app.use("/api/boards", boardsRouter);
 
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
@@ -30,7 +30,7 @@ app.use((_, res, __) => {
   res.status(404).json({
     status: "error",
     code: 404,
-    message: "Use api on routes: /api/tasks",
+    message: "Use api on routes: /api/boards",
     data: "Not found",
   });
 });
