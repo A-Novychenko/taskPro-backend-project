@@ -10,11 +10,8 @@ const addColumn = require("./addColumn");
 const updateColumn = require("./updateColumn");
 const deleteColumn = require("./deleteColumn");
 const getTasks = require("./getTasks");
-const updateTask = require("./updateTask");
-const deleteTask = require("./deleteTask");
-
-
-
+// const updateTask = require("./updateTask");
+// const deleteTask = require("./deleteTask");
 
 module.exports = {
   addTask: controllerWrapper(addTask),
@@ -27,6 +24,6 @@ module.exports = {
   updateColumn: controllerWrapper(updateColumn),
   deleteColumn: controllerWrapper(deleteColumn),
   getTasks: controllerWrapper(getTasks),
-  updateTask: controllerWrapper(updateTask),
-  deleteTask: controllerWrapper(deleteTask),
+  // updateTask: controllerWrapper(updateTask),
+  // deleteTask: controllerWrapper(deleteTask),
 };
