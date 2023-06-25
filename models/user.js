@@ -53,7 +53,7 @@ const loginSchema = Joi.object({
 });
 
 const themaSchema = Joi.object({
-  thema: Joi.string().required(),
+  thema: Joi.string().valid("dark", "light", "violet").required(),
 });
 
 const schemas = {
