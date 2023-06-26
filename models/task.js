@@ -43,6 +43,14 @@ const boardSchema = new Schema(
       type: String,
       required: true,
     },
+    background: {
+      type: String,
+      required: true,
+    },
+    dashboardIcon: {
+      type: String,
+      required: true,
+    },
     owner: {
       type: Schema.Types.ObjectId,
       ref: "users",
@@ -54,6 +62,8 @@ const boardSchema = new Schema(
 
 const boardJoiSchema = Joi.object({
   title: Joi.string().required(),
+  background: Joi.string().required(),
+  dashboardIcon: Joi.string().required(),
 });
 
 const columnSchema = new Schema(

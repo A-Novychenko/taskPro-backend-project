@@ -96,6 +96,40 @@
           }
         }
       }
+    },
+    "/auth/current": {
+      "get": {
+        "tags": ["Auth"],
+        "summary": "Get information about the current user",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "The token issued to the current user."
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "Information found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetUserResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing header with authorization token."
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -187,8 +221,60 @@
           },
           "token": {
             "type": "string",
-            "description": "JWT",
+            "description": "Bearer token",
             "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+          }
+        }
+      },
+      "GetUserResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "User's data",
+            "properties": {
+              "status": {
+                "type": "string",
+                "description": "User's avatar",
+                "example": "OK"
+              },
+              "code": {
+                "type": "integer",
+                "description": "Code",
+                "example": "200"
+              },
+              "token": {
+                "type": "string",
+                "description": "Bearer token",
+                "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+              },
+              "user": {
+                "type": "object",
+                "description": "User data",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "description": "email",
+                    "example": "Mango@mail.com"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "name",
+                    "example": "Mango"
+                  },
+                  "thema": {
+                    "type": "string",
+                    "description": "thema",
+                    "example": "violet"
+                  },
+                  "avatarURL": {
+                    "type": "string",
+                    "description": "avatarURL",
+                    "example": "//www.gravatar.com/avatar/cb7969c38a80489e114749a256e14a32"
+                  }
+                }
+              }
+            }
           }
         },
 
