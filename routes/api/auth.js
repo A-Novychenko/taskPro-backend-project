@@ -23,7 +23,7 @@ router.get("/current", authenticate, getCurrent);
 
 router.post("/logout", authenticate, logout);
 
-router.patch("/avatars", authenticate, upload.single("avatar"), updateUser);
+router.patch("/updateUser", authenticate, upload.single("avatar"), updateUser);
 
 router.patch(
   "/thema",
