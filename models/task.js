@@ -6,11 +6,11 @@ const taskSchema = new Schema(
   {
     title: {
       type: String,
-      required: true,
+      default: "",
     },
     description: {
       type: String,
-      required: true,
+      default: "",
     },
     priority: {
       type: String,
@@ -45,11 +45,9 @@ const boardSchema = new Schema(
     },
     background: {
       type: String,
-      required: true,
     },
     dashboardIcon: {
       type: String,
-      required: true,
     },
     owner: {
       type: Schema.Types.ObjectId,
