@@ -22,9 +22,13 @@ const register = async (req, res) => {
   });
 
   res.status(201).json({
-    name: newUser.name,
-    email: newUser.email,
-    thema: newUser.thema,
+    status: "created",
+    code: 201,
+
+    user: {
+      name: newUser.name,
+      email: newUser.email,
+    },
   });
 };
 
