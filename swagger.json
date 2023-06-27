@@ -162,7 +162,7 @@
     },
 
     "/auth/user": {
-      "patch": {
+      "put": {
         "tags": ["Auth"],
         "summary": "Update profile user",
         "parameters": [
@@ -346,26 +346,30 @@
       },
       "UpdateRequest": {
         "type": "object",
-
+        "required": ["name", "email", "thema"],
         "properties": {
           "email": {
             "type": "string",
+            "required": true,
             "description": "User's email",
             "format": "email",
             "example": "mango@mail.com"
           },
           "name": {
             "type": "string",
+            "required": true,
             "description": "name",
             "example": "mango"
           },
           "password": {
             "type": "string",
+            "required": true,
             "description": "User's name",
             "example": "mango123"
           },
           "thema": {
             "type": "string",
+            "required": true,
             "description": "thema",
             "example": "violet"
           },

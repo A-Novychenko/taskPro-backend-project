@@ -24,7 +24,7 @@ router.get("/current", authenticate, getCurrent);
 
 router.post("/logout", authenticate, logout);
 
-router.patch(
+router.put(
   "/user",
   authenticate,
   validateBody(schemas.updateSchema),
