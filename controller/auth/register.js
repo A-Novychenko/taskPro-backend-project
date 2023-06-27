@@ -1,14 +1,18 @@
 const bcrypt = require("bcrypt");
 
+const jwt = require("jsonwebtoken");
+
 const gravatar = require("gravatar");
 
-const {HttpError} = require("../../helpers");
+const { SECRET_KEY } = process.env;
 
-const {User} = require("../../models/user");
+const { HttpError } = require("../../helpers");
+
+const { User } = require("../../models/user");
 
 const register = async (req, res) => {
-  const {email, password} = req.body;
-  const user = await User.findOne({email});
+  const { email, password } = req.body;
+  const user = await User.findOne({ email });
   if (user) {
     throw HttpError(409, "Email already in use");
   }
@@ -21,9 +25,18 @@ const register = async (req, res) => {
     avatarURL,
   });
 
+  const { _id: id } = newUser;
+
+  const payload = {
+    id,
+  };
+
+  const token = jwt.sign(payload, SECRET_KEY, { expiresIn: "23h" });
+
   res.status(201).json({
     status: "created",
     code: 201,
+    token,
 
     user: {
       name: newUser.name,
