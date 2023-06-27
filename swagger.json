@@ -192,7 +192,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetUserResponse"
+                  "$ref": "#/components/schemas/UpdateResponse"
                 }
               }
             }
@@ -346,7 +346,7 @@
       },
       "UpdateRequest": {
         "type": "object",
-        "required": ["name", "email", "thema"],
+        "required": ["name", "email", "password"],
         "properties": {
           "email": {
             "type": "string",
@@ -367,12 +367,7 @@
             "description": "User's name",
             "example": "mango123"
           },
-          "thema": {
-            "type": "string",
-            "required": true,
-            "description": "thema",
-            "example": "violet"
-          },
+
           "avatarURL": {
             "type": "string",
             "description": "avatarURL",
@@ -478,6 +473,66 @@
                 "description": "Bearer token",
                 "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
               },
+              "user": {
+                "type": "object",
+                "description": "User data",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "description": "email",
+                    "example": "Mango@mail.com"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "name",
+                    "example": "Mango"
+                  },
+                  "thema": {
+                    "type": "string",
+                    "description": "thema",
+                    "example": "violet"
+                  },
+                  "avatarURL": {
+                    "type": "string",
+                    "description": "avatarURL",
+                    "example": "//www.gravatar.com/avatar/cb7969c38a80489e114749a256e14a32"
+                  }
+                }
+              }
+            }
+          }
+        },
+
+        "example": {
+          "status": "OK",
+          "code": 200,
+          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTg4ZGFlNzRjMGViZjQ5OGM2NGZjNSIsImlhdCI6MTY4Nzc4NjgzMiwiZXhwIjoxNjg3ODY5NjMyfQ.EBxwiQFbtJwKdbGD58qGyFGEtSiG7KA1C1Xkwe6kNNw",
+          "user": {
+            "email": "novychenkoae@gmail.com",
+            "name": "novychenkoae",
+            "thema": "violet",
+            "avatarURL": "//www.gravatar.com/avatar/cb7969c38a80489e114749a256e14a32"
+          }
+        }
+      },
+      "UpdateResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "User's data",
+            "properties": {
+              "status": {
+                "type": "string",
+                "description": "User's avatar",
+                "example": "OK"
+              },
+              "code": {
+                "type": "integer",
+                "description": "Code",
+                "example": "200"
+              },
+
               "user": {
                 "type": "object",
                 "description": "User data",
