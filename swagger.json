@@ -16,6 +16,10 @@
     {
       "name": "Auth",
       "description": "Authorization endpoints"
+    },
+    {
+      "name": "Board",
+      "description": "Boards endpoints"
     }
   ],
   "paths": {
@@ -255,6 +259,538 @@
           }
         }
       }
+    },
+    "/boards/": {
+      "get": {
+        "tags": ["Board"],
+        "summary": "Get all boards",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "The token issued to the current user."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thema changed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThemeResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing header with authorization token."
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/boards/ ": {
+      "post": {
+        "tags": ["Board"],
+        "summary": "Get all boards",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "The token issued to the current user."
+          }
+        ],
+        "requestBody": {
+          "description": "Thema change.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ThemeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Thema changed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThemeResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing header with authorization token."
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/boards/{boardId} ": {
+      "put": {
+        "tags": ["Board"],
+        "summary": "Get all boards",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "The token issued to the current user."
+          }
+        ],
+        "requestBody": {
+          "description": "Thema change.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ThemeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Thema changed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThemeResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing header with authorization token."
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/boards/{boardId}": {
+      "delete": {
+        "tags": ["Board"],
+        "summary": "Get all boards",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "The token issued to the current user."
+          }
+        ],
+        "requestBody": {
+          "description": "Thema change.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ThemeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Thema changed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThemeResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing header with authorization token."
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/boards/{boardId}/columns": {
+      "get": {
+        "tags": ["Board"],
+        "summary": "Get all boards",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "The token issued to the current user."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thema changed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThemeResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing header with authorization token."
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/boards/{boardId}/columns ": {
+      "post": {
+        "tags": ["Board"],
+        "summary": "Get all boards",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "The token issued to the current user."
+          }
+        ],
+        "requestBody": {
+          "description": "Thema change.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ThemeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Thema changed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThemeResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing header with authorization token."
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/boards/{boardId}/columns/{columnId} ": {
+      "put": {
+        "tags": ["Board"],
+        "summary": "Get all boards",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "The token issued to the current user."
+          }
+        ],
+        "requestBody": {
+          "description": "Thema change.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ThemeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Thema changed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThemeResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing header with authorization token."
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/boards/{boardId}/columns/{columnId}": {
+      "delete": {
+        "tags": ["Board"],
+        "summary": "Get all boards",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "The token issued to the current user."
+          }
+        ],
+        "requestBody": {
+          "description": "Thema change.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ThemeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Thema changed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThemeResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing header with authorization token."
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+
+    "/boards/{boardId}/columns/{columnId}/tasks": {
+      "get": {
+        "tags": ["Board"],
+        "summary": "Get all boards",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "The token issued to the current user."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thema changed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThemeResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing header with authorization token."
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/boards/{boardId}/columns/{columnId}/tasks ": {
+      "post": {
+        "tags": ["Board"],
+        "summary": "Get all boards",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "The token issued to the current user."
+          }
+        ],
+        "requestBody": {
+          "description": "Thema change.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ThemeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Thema changed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThemeResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing header with authorization token."
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/boards/{boardId}/columns/{columnId}/tasks/{taskId} ": {
+      "put": {
+        "tags": ["Board"],
+        "summary": "Get all boards",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "The token issued to the current user."
+          }
+        ],
+        "requestBody": {
+          "description": "Thema change.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ThemeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Thema changed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThemeResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing header with authorization token."
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/boards/{boardId}/columns/{columnId}/tasks/{taskId}": {
+      "delete": {
+        "tags": ["Board"],
+        "summary": "Get all boards",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "The token issued to the current user."
+          }
+        ],
+        "requestBody": {
+          "description": "Thema change.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ThemeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Thema changed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThemeResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing header with authorization token."
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -341,49 +877,6 @@
             "type": "string",
             "description": "User's name",
             "example": "mango123"
-          }
-        }
-      },
-      "UpdateRequest": {
-        "type": "object",
-        "required": ["name", "email", "password"],
-        "properties": {
-          "email": {
-            "type": "string",
-            "required": true,
-            "description": "User's email",
-            "format": "email",
-            "example": "mango@mail.com"
-          },
-          "name": {
-            "type": "string",
-            "required": true,
-            "description": "name",
-            "example": "mango"
-          },
-          "password": {
-            "type": "string",
-            "required": true,
-            "description": "User's name",
-            "example": "mango123"
-          },
-
-          "avatarURL": {
-            "type": "string",
-            "description": "avatarURL",
-            "example": "//www.gravatar.com/avatar/cb7969c38a80489e114749a256e14a32"
-          }
-        }
-      },
-      "ThemeRequest": {
-        "type": "object",
-
-        "properties": {
-          "thema": {
-            "type": "string",
-            "description": "thema",
-            "format": "['dark', 'light', 'violet']",
-            "example": "dark"
           }
         }
       },
@@ -515,6 +1008,37 @@
           }
         }
       },
+      "UpdateRequest": {
+        "type": "object",
+        "required": ["name", "email", "password"],
+        "properties": {
+          "email": {
+            "type": "string",
+            "required": true,
+            "description": "User's email",
+            "format": "email",
+            "example": "mango@mail.com"
+          },
+          "name": {
+            "type": "string",
+            "required": true,
+            "description": "name",
+            "example": "mango"
+          },
+          "password": {
+            "type": "string",
+            "required": true,
+            "description": "User's name",
+            "example": "mango123"
+          },
+
+          "avatarURL": {
+            "type": "string",
+            "description": "avatarURL",
+            "example": "//www.gravatar.com/avatar/cb7969c38a80489e114749a256e14a32"
+          }
+        }
+      },
       "UpdateResponse": {
         "type": "object",
         "properties": {
@@ -572,6 +1096,19 @@
             "name": "novychenkoae",
             "thema": "violet",
             "avatarURL": "//www.gravatar.com/avatar/cb7969c38a80489e114749a256e14a32"
+          }
+        }
+      },
+
+      "ThemeRequest": {
+        "type": "object",
+
+        "properties": {
+          "thema": {
+            "type": "string",
+            "description": "thema",
+            "format": "['dark', 'light', 'violet']",
+            "example": "dark"
           }
         }
       },
