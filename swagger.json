@@ -275,20 +275,17 @@
         ],
         "responses": {
           "200": {
-            "description": "Thema changed.",
+            "description": "All user boards received.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ThemeResponse"
+                  "$ref": "#/components/schemas/GetAllBoardsResponse"
                 }
               }
             }
           },
           "401": {
             "description": "Missing header with authorization token."
-          },
-          "400": {
-            "description": "Bad request"
           },
           "500": {
             "description": "Server error"
@@ -299,7 +296,7 @@
     "/boards/ ": {
       "post": {
         "tags": ["Board"],
-        "summary": "Get all boards",
+        "summary": "Create new board",
         "parameters": [
           {
             "in": "header",
@@ -310,32 +307,32 @@
           }
         ],
         "requestBody": {
-          "description": "Thema change.",
+          "description": "Create new board.",
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ThemeRequest"
+                "$ref": "#/components/schemas/CreateBoardRequest"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Thema changed.",
+            "description": "New board created.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ThemeResponse"
+                  "$ref": "#/components/schemas/CreateBoardResponse"
                 }
               }
             }
           },
+          "400": {
+            "description": "This board name already exists."
+          },
           "401": {
             "description": "Missing header with authorization token."
-          },
-          "400": {
-            "description": "Bad request"
           },
           "500": {
             "description": "Server error"
@@ -1138,6 +1135,118 @@
           }
         },
         "example": {"thema": "dark"}
+      },
+      "GetAllBoardsResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "All boards",
+            "properties": {
+              "status": {
+                "type": "string",
+                "description": "Status",
+                "example": "OK"
+              },
+              "code": {
+                "type": "integer",
+                "description": "Code",
+                "example": "200"
+              },
+              "boards": {
+                "type": "array",
+                "description": "An array of user boards",
+                "boards": []
+              }
+            }
+          }
+        },
+        "example": {
+          "status": "success",
+          "code": 200,
+          "boards": [
+            {
+              "_id": "649a0ea19b3bc2ba3a3d866d",
+              "title": "Project1",
+              "background": "backgroundURL",
+              "dashboardIcon": "icon"
+            },
+            {
+              "_id": "649a0ea19b3bc2ba3a3d866t",
+              "title": "Project2",
+              "background": "backgroundURL",
+              "dashboardIcon": "icon"
+            }
+          ]
+        }
+      },
+      "CreateBoardRequest": {
+        "type": "object",
+        "required": ["title", "background", "dashboardIcon"],
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Board's name",
+            "example": "new bord"
+          },
+          "background": {
+            "type": "string",
+            "description": "Board's background",
+            "format": "email",
+            "example": "12"
+          },
+          "dashboardIcon": {
+            "type": "string",
+            "description": "Board's previcon",
+            "example": "12"
+          }
+        }
+      },
+      "CreateBoardResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "User's data",
+            "properties": {
+              "status": {
+                "type": "string",
+                "description": "response status",
+                "example": "created"
+              },
+              "code": {
+                "type": "integer",
+                "description": "Code",
+                "example": "201"
+              },
+              "user": {
+                "type": "object",
+                "description": "User data",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "name",
+                    "example": "mango"
+                  },
+                  "email": {
+                    "type": "string",
+                    "description": "email",
+                    "example": "mango@mail.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+
+        "example": {
+          "status": "created",
+          "code": 201,
+          "user": {
+            "name": "mango",
+            "email": "mango@mail.com"
+          }
+        }
       }
     },
 
