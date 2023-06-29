@@ -63,11 +63,17 @@ const themaSchema = Joi.object({
   thema: Joi.string().valid("dark", "light", "violet").required(),
 });
 
+const supportSchema = Joi.object({
+  email: Joi.string().pattern(emailRegexp).required(),
+  comment: Joi.string().min(1).required(),
+});
+
 const schemas = {
   registerSchema,
   loginSchema,
   themaSchema,
   updateSchema,
+  supportSchema,
 };
 
 const User = model("user", userSchema);

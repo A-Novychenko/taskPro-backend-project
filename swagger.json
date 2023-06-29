@@ -264,6 +264,54 @@
         }
       }
     },
+    "/auth/support": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Send an email to technical support",
+        "security": [{"Bearer": []}],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "The token issued to the current user."
+          }
+        ],
+        "requestBody": {
+          "description": "Email and comment to support",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SupportRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Email sent.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SupportResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing header with authorization token."
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
     "/boards/": {
       "get": {
         "tags": ["Board"],
@@ -1263,6 +1311,56 @@
         },
         "example": {"thema": "dark"}
       },
+      "SupportRequest": {
+        "type": "object",
+        "required": ["email", "comment"],
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "Feedback email",
+            "format": "email",
+            "example": "mango@mail.com"
+          },
+          "comment": {
+            "type": "string",
+            "description": "User's comment",
+            "example": "Lorem ipsum"
+          }
+        }
+      },
+      "SupportResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "User's data",
+            "properties": {
+              "status": {
+                "type": "string",
+                "description": "response status",
+                "example": "OK"
+              },
+              "code": {
+                "type": "integer",
+                "description": "Code",
+                "example": "200"
+              },
+              "message": {
+                "type": "string",
+                "description": "status message",
+                "example": "email sent"
+              }
+            }
+          }
+        },
+
+        "example": {
+          "status": "OK",
+          "code": 200,
+          "message": "Email sent"
+        }
+      },
+
       "GetAllBoardsResponse": {
         "type": "object",
         "properties": {

@@ -1,6 +1,6 @@
 const nodemailer = require("nodemailer");
 
-const {UKR_NET_EMAIL, UKR_NET_PASSWORD} = process.env;
+const {UKR_NET_EMAIL, UKR_NET_PASSWORD, MAIL_SUPPORT} = process.env;
 
 const nodemailerConfig = {
   host: "smtp.ukr.net",
@@ -15,7 +15,17 @@ const nodemailerConfig = {
 const transport = nodemailer.createTransport(nodemailerConfig);
 
 const sendEmail = async (data) => {
-  const email = {...data, from: UKR_NET_EMAIL};
+  // const email = {
+  //   to: MAIL_SUPPORT,
+  //   from: UKR_NET_EMAIL,
+  //   subject: "Request for help from a TaskPro user",
+  //   html: `<div><p>Registered application user, login: <strong>${name}</strong></p>
+  // <p>Message from user: <strong>${comment}</strong></p>
+  // <p>Send response to email: <strong>${feedBackEmail}</strong></p><div/>`,
+  // };
+
+  const email = {...data, from: UKR_NET_EMAIL, to: MAIL_SUPPORT};
+
   await transport.sendMail(email);
   return true;
 };

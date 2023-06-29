@@ -14,6 +14,7 @@ const {
   logout,
   updateUser,
   updateThema,
+  support,
 } = require("../../controller/auth");
 
 router.post("/register", validateBody(schemas.registerSchema), register);
@@ -37,6 +38,13 @@ router.patch(
   authenticate,
   validateBody(schemas.themaSchema),
   updateThema
+);
+
+router.post(
+  "/support",
+  authenticate,
+  validateBody(schemas.supportSchema),
+  support
 );
 
 module.exports = router;

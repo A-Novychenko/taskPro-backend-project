@@ -1,4 +1,4 @@
-const { controllerWrapper } = require("../../helpers");
+const {controllerWrapper} = require("../../helpers");
 
 const register = require("./register");
 const login = require("./login");
@@ -6,6 +6,7 @@ const getCurrent = require("./getCurrent");
 const logout = require("./logout");
 const updateUser = require("./updateUser");
 const updateThema = require("./updateThema");
+const support = require("./support");
 
 module.exports = {
   register: controllerWrapper(register),
@@ -14,4 +15,5 @@ module.exports = {
   logout: controllerWrapper(logout),
   updateUser: controllerWrapper(updateUser),
   updateThema: controllerWrapper(updateThema),
+  support: controllerWrapper(support),
 };
