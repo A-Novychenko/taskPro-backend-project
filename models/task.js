@@ -14,8 +14,8 @@ const taskSchema = new Schema(
     },
     priority: {
       type: String,
-      enum: ["priority1", "priority2", "priority3"],
-      default: "priority1",
+      enum: ["without", "low", "high", "medium"],
+      default: "without",
     },
     deadline: {
       type: Date,
@@ -35,6 +35,7 @@ const taskJoiSchema = Joi.object({
   title: Joi.string().required(),
   description: Joi.string().required(),
   deadline: Joi.date(),
+  priority: Joi.string().valid("without", "low", "high", "medium"),
 });
 
 const boardSchema = new Schema(

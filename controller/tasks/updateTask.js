@@ -3,11 +3,20 @@ const {Task} = require("../../models/task");
 
 const updateTask = async (req, res) => {
   const {taskId} = req.params;
-  const result = await Task.findByIdAndUpdate(taskId, req.body, {new: true});
-  if (!result) {
+  const task = await Task.findByIdAndUpdate(taskId, req.body, {
+    new: true,
+    select: "-createdAt -updatedAt",
+  });
+  if (!task) {
     throw HttpError(404, "Not found");
   }
-  res.json(result);
+
+  res.json({
+    status: "success",
+    code: 200,
+    message: "Task updated successfully",
+    task,
+  });
 };
 
 module.exports = updateTask;

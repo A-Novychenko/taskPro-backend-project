@@ -67,7 +67,7 @@
         "tags": ["Auth"],
         "summary": "Login user",
         "parameters": [],
-        "security": [{"Bearer": []}],
+
         "requestBody": {
           "description": "Login's object",
           "required": true,
@@ -105,6 +105,7 @@
       "post": {
         "tags": ["Auth"],
         "summary": "Logout user",
+
         "parameters": [
           {
             "in": "header",
@@ -134,6 +135,7 @@
       "get": {
         "tags": ["Auth"],
         "summary": "Get information about the current user",
+        "security": [{"Bearer": []}],
         "parameters": [
           {
             "in": "header",
@@ -169,6 +171,7 @@
       "put": {
         "tags": ["Auth"],
         "summary": "Update profile user",
+        "security": [{"Bearer": []}],
         "parameters": [
           {
             "in": "header",
@@ -217,6 +220,7 @@
       "patch": {
         "tags": ["Auth"],
         "summary": "Ghange theme",
+        "security": [{"Bearer": []}],
         "parameters": [
           {
             "in": "header",
@@ -264,6 +268,7 @@
       "get": {
         "tags": ["Board"],
         "summary": "Get all boards",
+        "security": [{"Bearer": []}],
         "parameters": [
           {
             "in": "header",
@@ -297,6 +302,7 @@
       "post": {
         "tags": ["Board"],
         "summary": "Create new board",
+        "security": [{"Bearer": []}],
         "parameters": [
           {
             "in": "header",
@@ -343,7 +349,8 @@
     "/boards/{boardId} ": {
       "put": {
         "tags": ["Board"],
-        "summary": "Get all boards",
+        "summary": "Update board by id",
+        "security": [{"Bearer": []}],
         "parameters": [
           {
             "in": "header",
@@ -351,26 +358,33 @@
             "required": true,
             "type": "string",
             "description": "The token issued to the current user."
+          },
+          {
+            "in": "path",
+            "name": "boardId",
+            "required": true,
+            "type": "string",
+            "description": "Board id"
           }
         ],
         "requestBody": {
-          "description": "Thema change.",
+          "description": "Update fields.",
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ThemeRequest"
+                "$ref": "#/components/schemas/CreateBoardRequest"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Thema changed.",
+            "description": "Board updated.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ThemeResponse"
+                  "$ref": "#/components/schemas/CreateBoardResponse"
                 }
               }
             }
@@ -380,6 +394,9 @@
           },
           "400": {
             "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
           },
           "500": {
             "description": "Server error"
@@ -390,7 +407,8 @@
     "/boards/{boardId}": {
       "delete": {
         "tags": ["Board"],
-        "summary": "Get all boards",
+        "summary": "Delete board by id",
+        "security": [{"Bearer": []}],
         "parameters": [
           {
             "in": "header",
@@ -398,26 +416,22 @@
             "required": true,
             "type": "string",
             "description": "The token issued to the current user."
+          },
+          {
+            "in": "path",
+            "name": "boardId",
+            "required": true,
+            "type": "string",
+            "description": "Board id"
           }
         ],
-        "requestBody": {
-          "description": "Thema change.",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ThemeRequest"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
-            "description": "Thema changed.",
+            "description": "Board deleted.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ThemeResponse"
+                  "$ref": "#/components/schemas/DeleteBoardResponse"
                 }
               }
             }
@@ -425,8 +439,8 @@
           "401": {
             "description": "Missing header with authorization token."
           },
-          "400": {
-            "description": "Bad request"
+          "404": {
+            "description": "Not found"
           },
           "500": {
             "description": "Server error"
@@ -437,7 +451,8 @@
     "/boards/{boardId}/columns": {
       "get": {
         "tags": ["Board"],
-        "summary": "Get all boards",
+        "summary": "Get all columns",
+        "security": [{"Bearer": []}],
         "parameters": [
           {
             "in": "header",
@@ -445,15 +460,22 @@
             "required": true,
             "type": "string",
             "description": "The token issued to the current user."
+          },
+          {
+            "in": "path",
+            "name": "boardId",
+            "required": true,
+            "type": "string",
+            "description": "Board id"
           }
         ],
         "responses": {
           "200": {
-            "description": "Thema changed.",
+            "description": "Get columns.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ThemeResponse"
+                  "$ref": "#/components/schemas/GetColumnsResponse"
                 }
               }
             }
@@ -461,8 +483,8 @@
           "401": {
             "description": "Missing header with authorization token."
           },
-          "400": {
-            "description": "Bad request"
+          "404": {
+            "description": "Not found"
           },
           "500": {
             "description": "Server error"
@@ -473,7 +495,8 @@
     "/boards/{boardId}/columns ": {
       "post": {
         "tags": ["Board"],
-        "summary": "Get all boards",
+        "summary": "Create new column",
+        "security": [{"Bearer": []}],
         "parameters": [
           {
             "in": "header",
@@ -481,26 +504,33 @@
             "required": true,
             "type": "string",
             "description": "The token issued to the current user."
+          },
+          {
+            "in": "path",
+            "name": "boardId",
+            "required": true,
+            "type": "string",
+            "description": "Board id"
           }
         ],
         "requestBody": {
-          "description": "Thema change.",
+          "description": "Create new column.",
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ThemeRequest"
+                "$ref": "#/components/schemas/CreateColumnRequest"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Thema changed.",
+            "description": "Column created.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ThemeResponse"
+                  "$ref": "#/components/schemas/CreateColumnResponse"
                 }
               }
             }
@@ -510,6 +540,9 @@
           },
           "400": {
             "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
           },
           "500": {
             "description": "Server error"
@@ -520,7 +553,8 @@
     "/boards/{boardId}/columns/{columnId} ": {
       "put": {
         "tags": ["Board"],
-        "summary": "Get all boards",
+        "summary": "Update column by id",
+        "security": [{"Bearer": []}],
         "parameters": [
           {
             "in": "header",
@@ -528,26 +562,40 @@
             "required": true,
             "type": "string",
             "description": "The token issued to the current user."
+          },
+          {
+            "in": "path",
+            "name": "boardId",
+            "required": true,
+            "type": "string",
+            "description": "Board id"
+          },
+          {
+            "in": "path",
+            "name": "columnId",
+            "required": true,
+            "type": "string",
+            "description": "Column id"
           }
         ],
         "requestBody": {
-          "description": "Thema change.",
+          "description": "Column updated.",
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ThemeRequest"
+                "$ref": "#/components/schemas/CreateColumnRequest"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Thema changed.",
+            "description": "Column updated.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ThemeResponse"
+                  "$ref": "#/components/schemas/CreateColumnResponse"
                 }
               }
             }
@@ -557,6 +605,9 @@
           },
           "400": {
             "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
           },
           "500": {
             "description": "Server error"
@@ -567,7 +618,8 @@
     "/boards/{boardId}/columns/{columnId}": {
       "delete": {
         "tags": ["Board"],
-        "summary": "Get all boards",
+        "summary": "Delete column by id",
+        "security": [{"Bearer": []}],
         "parameters": [
           {
             "in": "header",
@@ -575,26 +627,29 @@
             "required": true,
             "type": "string",
             "description": "The token issued to the current user."
+          },
+          {
+            "in": "path",
+            "name": "boardId",
+            "required": true,
+            "type": "string",
+            "description": "Board id"
+          },
+          {
+            "in": "path",
+            "name": "columnId",
+            "required": true,
+            "type": "string",
+            "description": "Column id"
           }
         ],
-        "requestBody": {
-          "description": "Thema change.",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ThemeRequest"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
-            "description": "Thema changed.",
+            "description": "Column deleted.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ThemeResponse"
+                  "$ref": "#/components/schemas/DeleteBoardResponse"
                 }
               }
             }
@@ -602,8 +657,8 @@
           "401": {
             "description": "Missing header with authorization token."
           },
-          "400": {
-            "description": "Bad request"
+          "404": {
+            "description": "Not found"
           },
           "500": {
             "description": "Server error"
@@ -615,7 +670,8 @@
     "/boards/{boardId}/columns/{columnId}/tasks": {
       "get": {
         "tags": ["Board"],
-        "summary": "Get all boards",
+        "summary": "Get tasks",
+        "security": [{"Bearer": []}],
         "parameters": [
           {
             "in": "header",
@@ -623,15 +679,29 @@
             "required": true,
             "type": "string",
             "description": "The token issued to the current user."
+          },
+          {
+            "in": "path",
+            "name": "boardId",
+            "required": true,
+            "type": "string",
+            "description": "Board id"
+          },
+          {
+            "in": "path",
+            "name": "columnId",
+            "required": true,
+            "type": "string",
+            "description": "Column id"
           }
         ],
         "responses": {
           "200": {
-            "description": "Thema changed.",
+            "description": "Tasks received.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ThemeResponse"
+                  "$ref": "#/components/schemas/GetTasksResponse"
                 }
               }
             }
@@ -639,8 +709,8 @@
           "401": {
             "description": "Missing header with authorization token."
           },
-          "400": {
-            "description": "Bad request"
+          "404": {
+            "description": "Not found"
           },
           "500": {
             "description": "Server error"
@@ -651,7 +721,8 @@
     "/boards/{boardId}/columns/{columnId}/tasks ": {
       "post": {
         "tags": ["Board"],
-        "summary": "Get all boards",
+        "summary": "Create task",
+        "security": [{"Bearer": []}],
         "parameters": [
           {
             "in": "header",
@@ -659,26 +730,40 @@
             "required": true,
             "type": "string",
             "description": "The token issued to the current user."
+          },
+          {
+            "in": "path",
+            "name": "boardId",
+            "required": true,
+            "type": "string",
+            "description": "Board id"
+          },
+          {
+            "in": "path",
+            "name": "columnId",
+            "required": true,
+            "type": "string",
+            "description": "Column id"
           }
         ],
         "requestBody": {
-          "description": "Thema change.",
+          "description": "Create new task.",
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ThemeRequest"
+                "$ref": "#/components/schemas/CreateTaskRequest"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Thema changed.",
+            "description": "Task created.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ThemeResponse"
+                  "$ref": "#/components/schemas/CreateTaskResponse"
                 }
               }
             }
@@ -688,6 +773,9 @@
           },
           "400": {
             "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
           },
           "500": {
             "description": "Server error"
@@ -698,7 +786,8 @@
     "/boards/{boardId}/columns/{columnId}/tasks/{taskId} ": {
       "put": {
         "tags": ["Board"],
-        "summary": "Get all boards",
+        "summary": "Update task by id",
+        "security": [{"Bearer": []}],
         "parameters": [
           {
             "in": "header",
@@ -706,26 +795,47 @@
             "required": true,
             "type": "string",
             "description": "The token issued to the current user."
+          },
+          {
+            "in": "path",
+            "name": "boardId",
+            "required": true,
+            "type": "string",
+            "description": "Board id"
+          },
+          {
+            "in": "path",
+            "name": "columnId",
+            "required": true,
+            "type": "string",
+            "description": "Column id"
+          },
+          {
+            "in": "path",
+            "name": "taskId",
+            "required": true,
+            "type": "string",
+            "description": "Task id"
           }
         ],
         "requestBody": {
-          "description": "Thema change.",
+          "description": "Task change.",
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ThemeRequest"
+                "$ref": "#/components/schemas/CreateTaskRequest"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Thema changed.",
+            "description": "Task updated.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ThemeResponse"
+                  "$ref": "#/components/schemas/CreateTaskResponse"
                 }
               }
             }
@@ -735,6 +845,9 @@
           },
           "400": {
             "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
           },
           "500": {
             "description": "Server error"
@@ -745,7 +858,8 @@
     "/boards/{boardId}/columns/{columnId}/tasks/{taskId}": {
       "delete": {
         "tags": ["Board"],
-        "summary": "Get all boards",
+        "summary": "Delete task by id",
+        "security": [{"Bearer": []}],
         "parameters": [
           {
             "in": "header",
@@ -753,26 +867,36 @@
             "required": true,
             "type": "string",
             "description": "The token issued to the current user."
+          },
+          {
+            "in": "path",
+            "name": "boardId",
+            "required": true,
+            "type": "string",
+            "description": "Board id"
+          },
+          {
+            "in": "path",
+            "name": "columnId",
+            "required": true,
+            "type": "string",
+            "description": "Column id"
+          },
+          {
+            "in": "path",
+            "name": "taskId",
+            "required": true,
+            "type": "string",
+            "description": "Task id"
           }
         ],
-        "requestBody": {
-          "description": "Thema change.",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ThemeRequest"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
-            "description": "Thema changed.",
+            "description": "Task deleted",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ThemeResponse"
+                  "$ref": "#/components/schemas/DeleteBoardResponse"
                 }
               }
             }
@@ -782,6 +906,9 @@
           },
           "400": {
             "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
           },
           "500": {
             "description": "Server error"
@@ -1153,6 +1280,11 @@
                 "description": "Code",
                 "example": "200"
               },
+              "message": {
+                "type": "string",
+                "description": "message",
+                "example": "Success"
+              },
               "boards": {
                 "type": "array",
                 "description": "An array of user boards",
@@ -1164,6 +1296,7 @@
         "example": {
           "status": "success",
           "code": 200,
+          "message": "success",
           "boards": [
             {
               "_id": "649a0ea19b3bc2ba3a3d866d",
@@ -1207,7 +1340,7 @@
         "properties": {
           "data": {
             "type": "object",
-            "description": "User's data",
+            "description": "data",
             "properties": {
               "status": {
                 "type": "string",
@@ -1219,32 +1352,350 @@
                 "description": "Code",
                 "example": "201"
               },
-              "user": {
+              "message": {
+                "type": "string",
+                "description": "message",
+                "example": "Success"
+              },
+              "board": {
                 "type": "object",
-                "description": "User data",
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "description": "name",
-                    "example": "mango"
-                  },
-                  "email": {
-                    "type": "string",
-                    "description": "email",
-                    "example": "mango@mail.com"
+                "description": "Object Board",
+                "board": {
+                  "type": "object",
+                  "description": "board object",
+                  "properties": {
+                    "_id": {
+                      "type": "string",
+                      "description": "Board's id",
+                      "example": "649a0ed5fee974ec2948d6d8"
+                    },
+                    "title": {
+                      "type": "string",
+                      "description": "Board's id",
+                      "example": "649a0ed5fee974ec2948d6d8"
+                    },
+                    "background": {
+                      "type": "string",
+                      "description": "Board's background name",
+                      "example": "25"
+                    },
+                    "dashboardIcon": {
+                      "type": "string",
+                      "description": "Board's icon name",
+                      "example": "25"
+                    }
                   }
                 }
               }
             }
           }
         },
-
         "example": {
-          "status": "created",
+          "status": "success",
+          "code": 200,
+          "message": "success",
+          "boards": {
+            "_id": "649a0ea19b3bc2ba3a3d866d",
+            "title": "Project1",
+            "background": "backgroundName",
+            "dashboardIcon": "iconName"
+          }
+        }
+      },
+      "DeleteBoardResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "data",
+            "properties": {
+              "status": {
+                "type": "string",
+                "description": "response status",
+                "example": "deleted"
+              },
+              "code": {
+                "type": "integer",
+                "description": "Code",
+                "example": "200"
+              },
+              "message": {
+                "type": "string",
+                "description": "message"
+              }
+            }
+          }
+        },
+        "example": {
+          "status": "success",
+          "code": 200,
+          "message": "Deleted successfully"
+        }
+      },
+      "GetColumnsResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "data",
+            "properties": {
+              "status": {
+                "type": "string",
+                "description": "response status",
+                "example": "deleted"
+              },
+              "code": {
+                "type": "integer",
+                "description": "Code",
+                "example": "200"
+              },
+              "message": {
+                "type": "string",
+                "description": "message"
+              },
+              "columns": {
+                "type": "array",
+                "description": "array columns"
+              }
+            }
+          }
+        },
+        "example": {
+          "status": "success",
+          "code": 200,
+          "message": "Columns successfully received",
+          "columns": [
+            {
+              "_id": "649cb7e58a9011f69846e3aa",
+              "title": "Novychenko Column",
+              "owner": "649c57605fe27df73edbaaf7"
+            },
+            {
+              "_id": "649cb809128867e6eeaef92b",
+              "title": "Novychenko Column",
+              "owner": "649c57605fe27df73edbaaf7"
+            }
+          ]
+        }
+      },
+      "CreateColumnRequest": {
+        "type": "object",
+        "required": ["title"],
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Column's name",
+            "example": "new column"
+          }
+        }
+      },
+      "CreateColumnResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "data",
+            "properties": {
+              "status": {
+                "type": "string",
+                "description": "response status",
+                "example": "created"
+              },
+              "code": {
+                "type": "integer",
+                "description": "Code",
+                "example": "201"
+              },
+              "message": {
+                "type": "string",
+                "description": "message",
+                "example": "Success"
+              },
+              "column": {
+                "type": "object",
+                "description": "Object column",
+                "properties": {
+                  "_id": {
+                    "type": "string",
+                    "description": "Column's id",
+                    "example": "649a0ed5fee974ec2948d6d8"
+                  },
+                  "title": {
+                    "type": "string",
+                    "description": "Column's name",
+                    "example": "649a0ed5fee974ec2948d6d8"
+                  },
+                  "owner": {
+                    "type": "string",
+                    "description": "Column's background owner",
+                    "example": "649a0ed5fee974ec2948d6d8"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "example": {
+          "status": "success",
           "code": 201,
-          "user": {
-            "name": "mango",
-            "email": "mango@mail.com"
+          "message": "Operation successful",
+          "column": {
+            "_id": "649ccc9d6bb50f5e4c1924bb",
+            "title": "Novychenko Column 3",
+            "owner": "649c57605fe27df73edbaaf7"
+          }
+        }
+      },
+      "GetTasksResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "data",
+            "properties": {
+              "status": {
+                "type": "string",
+                "description": "response status",
+                "example": "deleted"
+              },
+              "code": {
+                "type": "integer",
+                "description": "Code",
+                "example": "200"
+              },
+              "message": {
+                "type": "string",
+                "description": "message"
+              },
+              "tasks": {
+                "type": "array",
+                "description": "array tasks"
+              }
+            }
+          }
+        },
+        "example": {
+          "status": "success",
+          "code": 200,
+          "message": "Tasks successfully received",
+          "tasks": [
+            {
+              "_id": "649d5899f40a099ab1715613",
+              "title": "task1",
+              "description": "test create task 1",
+              "priority": "without",
+              "owner": "649cb809128867e6eeaef92b",
+              "deadline": "2023-06-29T10:10:33.595Z"
+            },
+            {
+              "_id": "649d58a6f40a099ab1715616",
+              "title": "task1",
+              "description": "test create task 1",
+              "priority": "without",
+              "deadline": "2023-07-10T12:04:35.199Z",
+              "owner": "649cb809128867e6eeaef92b"
+            }
+          ]
+        }
+      },
+      "CreateTaskRequest": {
+        "type": "object",
+        "required": ["title", "description", "deadline", "priority"],
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Task's name",
+            "example": "new task"
+          },
+          "description": {
+            "type": "string",
+            "description": "Task's descriotion",
+            "example": "to do"
+          },
+          "deadline": {
+            "type": "string",
+            "description": "Task deadline",
+            "example": "1688990675199"
+          },
+          "priority": {
+            "type": "string",
+            "description": "Task's priority",
+            "example": "low"
+          }
+        }
+      },
+      "CreateTaskResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "data",
+            "properties": {
+              "status": {
+                "type": "string",
+                "description": "response status",
+                "example": "created"
+              },
+              "code": {
+                "type": "integer",
+                "description": "Code",
+                "example": "201"
+              },
+              "message": {
+                "type": "string",
+                "description": "message",
+                "example": "Success"
+              },
+              "task": {
+                "type": "object",
+                "description": "Object task",
+                "properties": {
+                  "_id": {
+                    "type": "string",
+                    "description": "Task's id",
+                    "example": "649a0ed5fee974ec2948d6d8"
+                  },
+                  "title": {
+                    "type": "string",
+                    "description": "Task's name",
+                    "example": "new task"
+                  },
+                  "owner": {
+                    "type": "string",
+                    "description": "Task's owner",
+                    "example": "649a0ed5fee974ec2948d6d8"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Task's description",
+                    "example": "to do"
+                  },
+                  "priority": {
+                    "type": "string",
+                    "description": "Task's priority",
+                    "example": "low"
+                  },
+                  "deadline": {
+                    "type": "string",
+                    "description": "Task's deadline",
+                    "example": "2023-07-10T12:04:35.199Z"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "example": {
+          "status": "create",
+          "code": 201,
+          "message": "success",
+          "task": {
+            "title": "task1",
+            "description": "test task 1",
+            "priority": "medium",
+            "deadline": "2023-07-10T12:04:35.199Z",
+            "owner": "649cb809128867e6eeaef92b",
+            "_id": "649d6a94cffa0ae1acca44d2"
           }
         }
       }

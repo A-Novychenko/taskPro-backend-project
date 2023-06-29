@@ -1,9 +1,29 @@
-const {Task } = require("../../models/task")
+const {Task} = require("../../models/task");
 
 const addTask = async (req, res) => {
-   const { columnId: owner } = req.params; 
-    const result = await Task.create({...req.body, owner}); 
-    res.status(201).json(result);
+  const {columnId: owner} = req.params;
+  const {
+    title,
+    description,
+    priority,
+    deadline,
+    owner: taskOwner,
+    _id,
+  } = await Task.create({...req.body, owner});
+
+  res.json({
+    status: "create",
+    code: 201,
+    message: "Task created successfully",
+    task: {
+      title,
+      description,
+      priority,
+      deadline,
+      owner: taskOwner,
+      _id,
+    },
+  });
 };
 
 module.exports = addTask;

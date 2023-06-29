@@ -8,12 +8,21 @@ const addBoard = async (req, res) => {
   if (result) {
     throw HttpError(409, "this board name already exists");
   }
-  const board = await Board.create({...req.body, owner});
+  const {_id, title, background, dashboardIcon} = await Board.create({
+    ...req.body,
+    owner,
+  });
 
   res.json({
     status: "create",
     code: 201,
-    board,
+    message: "Board created successfully",
+    board: {
+      _id,
+      title,
+      background,
+      dashboardIcon,
+    },
   });
 };
 
