@@ -53,11 +53,17 @@ const loginSchema = Joi.object({
 });
 
 const updateSchema = Joi.object({
-  name: Joi.string().required(),
-  email: Joi.string().pattern(emailRegexp).required(),
-  password: Joi.string().min(6).required(),
+  name: Joi.string(),
+  email: Joi.string().pattern(emailRegexp),
+  password: Joi.string().min(6),
   avatarURL: Joi.string(),
 });
+// const updateSchema = Joi.object({
+//   name: Joi.string().required(),
+//   email: Joi.string().pattern(emailRegexp).required(),
+//   password: Joi.string().min(6).required(),
+//   avatarURL: Joi.string(),
+// });
 
 const themaSchema = Joi.object({
   thema: Joi.string().valid("dark", "light", "violet").required(),

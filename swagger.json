@@ -9,8 +9,8 @@
       "url": "https://opensource.org/licenses/MIT"
     }
   },
-  "consumes": ["application/json"],
-  "produces": ["application/json"],
+  "consumes": ["application/json", "multipart/form-data"],
+  "produces": ["application/json", "multipart/form-data"],
   "servers": [{"url": "https://taskproapi.onrender.com"}],
   "tags": [
     {
@@ -183,10 +183,10 @@
         ],
 
         "requestBody": {
-          "description": "Registration's object",
+          "description": "Form-data",
           "required": true,
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
                 "$ref": "#/components/schemas/UpdateRequest"
               }
@@ -1182,7 +1182,7 @@
       },
       "UpdateRequest": {
         "type": "object",
-        "required": ["name", "email", "password"],
+        "required": ["name", "email", "password", "avatarURL"],
         "properties": {
           "email": {
             "type": "string",
@@ -1205,9 +1205,9 @@
           },
 
           "avatarURL": {
-            "type": "string",
-            "description": "avatarURL",
-            "example": "//www.gravatar.com/avatar/cb7969c38a80489e114749a256e14a32"
+            "type": "file",
+            "description": "file",
+            "example": "avatar.jpg"
           }
         }
       },

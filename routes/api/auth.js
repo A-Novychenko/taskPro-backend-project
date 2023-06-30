@@ -1,10 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const {validateBody} = require("../../middlewares");
-
-// const {authenticate, upload} = require("../../middlewares");
-const {authenticate} = require("../../middlewares");
+const {authenticate, validateBody, upload} = require("../../middlewares");
 
 const {schemas} = require("../../models/user");
 const {
@@ -29,7 +26,7 @@ router.put(
   "/user",
   authenticate,
   validateBody(schemas.updateSchema),
-  // upload.single("avatar"),
+  upload.single("avatarURL"),
   updateUser
 );
 
