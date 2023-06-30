@@ -3,7 +3,10 @@ const Joi = require("joi");
 
 const {handleMongooseError} = require("../helpers");
 
-const emailRegexp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+const {
+  userRegexp: {emailRegexp, nameRegexp, passwordRegexp},
+} = require("../regexp");
+// const emailRegexp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
 const userSchema = new Schema(
   {
@@ -28,7 +31,7 @@ const userSchema = new Schema(
     },
     avatarURL: {
       type: String,
-      required: true,
+      default: "",
     },
     token: {
       type: String,
@@ -42,28 +45,22 @@ const userSchema = new Schema(
 userSchema.post("save", handleMongooseError);
 
 const registerSchema = Joi.object({
-  name: Joi.string().required(),
+  name: Joi.string().min(2).max(32).pattern(nameRegexp).required(),
   email: Joi.string().pattern(emailRegexp).required(),
-  password: Joi.string().min(6).required(),
+  password: Joi.string().min(8).max(64).pattern(passwordRegexp).required(),
 });
 
 const loginSchema = Joi.object({
   email: Joi.string().pattern(emailRegexp).required(),
-  password: Joi.string().min(6).required(),
+  password: Joi.string().required(),
 });
 
 const updateSchema = Joi.object({
-  name: Joi.string(),
-  email: Joi.string().pattern(emailRegexp),
-  password: Joi.string().min(6),
+  name: Joi.string().min(2).max(32).pattern(nameRegexp).required(),
+  email: Joi.string().pattern(emailRegexp).required(),
+  password: Joi.string().min(8).max(64).pattern(passwordRegexp).required(),
   avatarURL: Joi.string(),
 });
-// const updateSchema = Joi.object({
-//   name: Joi.string().required(),
-//   email: Joi.string().pattern(emailRegexp).required(),
-//   password: Joi.string().min(6).required(),
-//   avatarURL: Joi.string(),
-// });
 
 const themaSchema = Joi.object({
   thema: Joi.string().valid("dark", "light", "violet").required(),

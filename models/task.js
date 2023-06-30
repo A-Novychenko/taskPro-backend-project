@@ -1,5 +1,5 @@
 const {Schema, model} = require("mongoose");
-const {handleMongooseError} = require("../helpers");
+
 const Joi = require("joi");
 
 const taskSchema = new Schema(
@@ -94,10 +94,6 @@ const schemas = {
   boardJoiSchema,
   columnJoiSchema,
 };
-
-taskSchema.post("save", handleMongooseError);
-boardSchema.post("save", handleMongooseError);
-columnSchema.post("save", handleMongooseError);
 
 const Task = model("task", taskSchema);
 const Board = model("board", boardSchema);

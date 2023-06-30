@@ -52,12 +52,13 @@
             }
           },
           "400": {
-            "description": "User creation error.",
-            "content": {}
+            "description": "User creation error."
+          },
+          "409": {
+            "description": "Email already in use."
           },
           "500": {
-            "description": "Server error",
-            "content": {}
+            "description": "Server error"
           }
         }
       }
@@ -91,12 +92,10 @@
             }
           },
           "400": {
-            "description": "Login error.",
-            "content": {}
+            "description": "Login error."
           },
           "500": {
-            "description": "Server error",
-            "content": {}
+            "description": "Server error"
           }
         }
       }
@@ -388,6 +387,9 @@
           "401": {
             "description": "Missing header with authorization token."
           },
+          "409": {
+            "description": "This board name already exists."
+          },
           "500": {
             "description": "Server error"
           }
@@ -445,6 +447,9 @@
           },
           "404": {
             "description": "Not found"
+          },
+          "409": {
+            "description": "This board name already exists."
           },
           "500": {
             "description": "Server error"
@@ -1469,8 +1474,8 @@
                     },
                     "title": {
                       "type": "string",
-                      "description": "Board's id",
-                      "example": "649a0ed5fee974ec2948d6d8"
+                      "description": "Board's name unique",
+                      "example": "new board 1"
                     },
                     "background": {
                       "type": "string",

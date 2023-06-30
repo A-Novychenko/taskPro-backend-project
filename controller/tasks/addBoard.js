@@ -5,9 +5,12 @@ const addBoard = async (req, res) => {
   const {_id: owner} = req.user;
   const result = await Board.findOne({owner, title: req.body.title});
 
+  console.log("result", result);
+
   if (result) {
     throw HttpError(409, "this board name already exists");
   }
+
   const {_id, title, background, dashboardIcon} = await Board.create({
     ...req.body,
     owner,
