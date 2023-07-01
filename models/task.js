@@ -84,7 +84,7 @@ const columnSchema = new Schema(
 
 const columnJoiSchema = Joi.object(
   {
-    title: Joi.string().min(2).max(20).required(),
+    title: Joi.string().min(2).max(32).required(),
   },
   {versionKey: false, timestamps: true}
 );
