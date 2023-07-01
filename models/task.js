@@ -62,7 +62,7 @@ const boardSchema = new Schema(
 );
 
 const boardJoiSchema = Joi.object({
-  title: Joi.string().required(),
+  title: Joi.string().min(2).max(20).required(),
   background: Joi.string(),
   dashboardIcon: Joi.string(),
 });
@@ -84,7 +84,7 @@ const columnSchema = new Schema(
 
 const columnJoiSchema = Joi.object(
   {
-    title: Joi.string().required(),
+    title: Joi.string().min(2).max(20).required(),
   },
   {versionKey: false, timestamps: true}
 );
