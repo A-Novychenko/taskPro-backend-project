@@ -3,12 +3,12 @@ const {Board} = require("../../models/task");
 
 const deleteBoard = async (req, res) => {
   const {boardId} = req.params;
-  const result = await Board.findByIdAndRemove(boardId);
-  if (!result) {
+  const board = await Board.findByIdAndRemove(boardId);
+  if (!board) {
     throw HttpError(404, "Not found");
   }
 
-  res.json({status: "success", code: 200, message: "Board deleted"});
+  res.json({status: "success", code: 200, message: "Board deleted", board});
 };
 
 module.exports = deleteBoard;
