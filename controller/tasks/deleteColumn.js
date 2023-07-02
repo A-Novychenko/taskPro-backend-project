@@ -3,11 +3,11 @@ const {Column} = require("../../models/task");
 
 const deleteColumn = async (req, res) => {
   const {columnId} = req.params;
-  const result = await Column.findByIdAndRemove(columnId);
-  if (!result) {
+  const column = await Column.findByIdAndRemove(columnId);
+  if (!column) {
     throw HttpError(404, "Not found");
   }
-  res.json({status: "success", code: 200, message: "Column deleted"});
+  res.json({status: "success", code: 200, message: "Column deleted", column});
 };
 
 module.exports = deleteColumn;
