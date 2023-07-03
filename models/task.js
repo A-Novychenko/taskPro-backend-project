@@ -85,6 +85,7 @@ const columnSchema = new Schema(
 const columnJoiSchema = Joi.object(
   {
     title: Joi.string().min(2).max(32).required(),
+    owner: Joi.string(),
   },
   {versionKey: false, timestamps: true}
 );
