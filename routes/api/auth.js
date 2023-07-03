@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const {authenticate, validateBody, upload} = require("../../middlewares");
+const {authenticate, validateBody, uploadCloud} = require("../../middlewares");
 
 const {schemas} = require("../../models/user");
 const {
@@ -25,7 +25,7 @@ router.post("/logout", authenticate, logout);
 router.put(
   "/user",
   authenticate,
-  upload.single("avatarURL"),
+  uploadCloud.single("avatarURL"),
   validateBody(schemas.updateSchema),
   updateUser
 );
