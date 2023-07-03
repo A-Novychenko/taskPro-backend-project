@@ -36,6 +36,7 @@ const taskJoiSchema = Joi.object({
   description: Joi.string().required(),
   deadline: Joi.date(),
   priority: Joi.string().valid("without", "low", "high", "medium"),
+  owner: Joi.string(),
 });
 
 const boardSchema = new Schema(
@@ -85,7 +86,6 @@ const columnSchema = new Schema(
 const columnJoiSchema = Joi.object(
   {
     title: Joi.string().min(2).max(32).required(),
-    owner: Joi.string(),
   },
   {versionKey: false, timestamps: true}
 );
