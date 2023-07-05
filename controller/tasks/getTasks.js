@@ -2,9 +2,9 @@ const {Task} = require("../../models/task");
 
 const getTasks = async (req, res) => {
   const {columnId: owner} = req.params;
+
   const tasks = await Task.find({owner}, "-createdAt -updatedAt");
 
-  // res.json(result);
   res.json({
     status: "success",
     code: 200,

@@ -1,9 +1,11 @@
-const {HttpError} = require("../../helpers");
 const {Board} = require("../../models/task");
+const {HttpError} = require("../../helpers");
 
 const deleteBoard = async (req, res) => {
   const {boardId} = req.params;
+
   const board = await Board.findByIdAndRemove(boardId);
+
   if (!board) {
     throw HttpError(404, "Not found");
   }

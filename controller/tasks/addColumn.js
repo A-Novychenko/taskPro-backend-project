@@ -2,6 +2,7 @@ const {Column} = require("../../models/task");
 
 const addColumn = async (req, res) => {
   const {boardId: owner} = req.params;
+
   const {
     _id,
     title,

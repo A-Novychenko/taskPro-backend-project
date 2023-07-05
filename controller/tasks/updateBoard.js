@@ -1,5 +1,5 @@
-const {HttpError} = require("../../helpers");
 const {Board} = require("../../models/task");
+const {HttpError} = require("../../helpers");
 
 const updateBoard = async (req, res) => {
   const {_id: owner} = req.user;
@@ -23,6 +23,7 @@ const updateBoard = async (req, res) => {
   if (!board) {
     throw HttpError(404, "Not found");
   }
+
   res.json({
     status: "create",
     code: 201,

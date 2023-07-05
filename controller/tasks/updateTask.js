@@ -1,12 +1,14 @@
-const {HttpError} = require("../../helpers");
 const {Task} = require("../../models/task");
+const {HttpError} = require("../../helpers");
 
 const updateTask = async (req, res) => {
   const {taskId} = req.params;
+
   const task = await Task.findByIdAndUpdate(taskId, req.body, {
     new: true,
     select: "-createdAt -updatedAt",
   });
+
   if (!task) {
     throw HttpError(404, "Not found");
   }

@@ -1,11 +1,10 @@
 const {Schema, model} = require("mongoose");
 const Joi = require("joi");
 
-const {handleMongooseError} = require("../helpers");
-
 const {
+  handleMongooseError,
   userRegexp: {emailRegexp, nameRegexp, passwordRegexp},
-} = require("../regexp");
+} = require("../helpers");
 
 const userSchema = new Schema(
   {

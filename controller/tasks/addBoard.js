@@ -1,11 +1,10 @@
-const {HttpError} = require("../../helpers");
 const {Board} = require("../../models/task");
+const {HttpError} = require("../../helpers");
 
 const addBoard = async (req, res) => {
   const {_id: owner} = req.user;
-  const result = await Board.findOne({owner, title: req.body.title});
 
-  console.log("result", result);
+  const result = await Board.findOne({owner, title: req.body.title});
 
   if (result) {
     throw HttpError(409, "this board name already exists");

@@ -1,5 +1,5 @@
-const {HttpError} = require("../../helpers");
 const {Column} = require("../../models/task");
+const {HttpError} = require("../../helpers");
 
 const deleteColumn = async (req, res) => {
   const {columnId} = req.params;

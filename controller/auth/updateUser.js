@@ -1,12 +1,16 @@
 const bcrypt = require("bcrypt");
 const cloudinary = require("cloudinary").v2;
+
 const {User} = require("../../models/user");
 
 const updateUser = async (req, res) => {
   const {_id} = req.user;
   const {password} = req.body;
+
   const hashPassword = await bcrypt.hash(password, 10);
+
   const user = await User.findById(_id);
+
   let avatarURL = user.avatarURL;
   if (req.file) {
     if (avatarURL !== "") {
@@ -18,6 +22,7 @@ const updateUser = async (req, res) => {
     }
     avatarURL = req.file.path;
   }
+
   const result = await User.findByIdAndUpdate(
     _id,
     {...req.body, avatarURL, password: hashPassword},

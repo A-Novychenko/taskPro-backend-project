@@ -1,5 +1,4 @@
 const {Schema, model} = require("mongoose");
-
 const Joi = require("joi");
 
 const taskSchema = new Schema(
@@ -83,12 +82,9 @@ const columnSchema = new Schema(
   {versionKey: false, timestamps: true}
 );
 
-const columnJoiSchema = Joi.object(
-  {
-    title: Joi.string().min(2).max(32).required(),
-  },
-  {versionKey: false, timestamps: true}
-);
+const columnJoiSchema = Joi.object({
+  title: Joi.string().min(2).max(32).required(),
+});
 
 const schemas = {
   taskJoiSchema,

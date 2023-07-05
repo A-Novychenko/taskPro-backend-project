@@ -15,11 +15,8 @@ const {
   deleteTask,
   updateTask,
 } = require("../../controller/tasks");
-
-const {authenticate} = require("../../middlewares");
-
 const {schemas} = require("../../models/task");
-const {validateBody, isValidId} = require("../../middlewares");
+const {authenticate, validateBody, isValidId} = require("../../middlewares");
 
 router.get("/", authenticate, getAllBoards);
 router.post("/", authenticate, validateBody(schemas.boardJoiSchema), addBoard);
@@ -31,7 +28,6 @@ router.put(
   updateBoard
 );
 router.delete("/:boardId", authenticate, isValidId, deleteBoard);
-
 router.get("/:boardId/columns", authenticate, isValidId, getColumns);
 router.post(
   "/:boardId/columns",
@@ -53,7 +49,6 @@ router.delete(
   isValidId,
   deleteColumn
 );
-
 router.get(
   "/:boardId/columns/:columnId/tasks",
   authenticate,

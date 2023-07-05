@@ -10,7 +10,6 @@ const isValidId = (req, res, next) => {
       next(HttpError(400, `${id} invalid format`));
     }
   });
-
   next();
 };
 

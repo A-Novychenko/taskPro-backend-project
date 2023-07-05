@@ -1,12 +1,14 @@
-const {HttpError} = require("../../helpers");
 const {Column} = require("../../models/task");
+const {HttpError} = require("../../helpers");
 
 const updateColumn = async (req, res) => {
   const {columnId} = req.params;
+
   const column = await Column.findByIdAndUpdate(columnId, req.body, {
     new: true,
     select: "-createdAt -updatedAt",
   });
+
   if (!column) {
     throw HttpError(404, "Not found");
   }
