@@ -1,4 +1,4 @@
-# taskPro-backend-project
+# TaskPro Backend API
 
 Це репозиторій проекту TaskPro Backend API, який надає API для взаємодії з додатком TaskPro.
 
@@ -31,7 +31,8 @@ https://taskproapi.onrender.com
 
 ## API
 
-Детальний опис запитів для взаємодії, описаний в документації:
+Детальний опис запитів для взаємодії, описаний в
+[документації:](https://taskproapi.onrender.com/api-docs).
 
 ```
 https://taskproapi.onrender.com/api-docs
@@ -48,7 +49,7 @@ https://taskproapi.onrender.com/api-docs
 - `npm run lint` &mdash; запустити виконання перевірки коду з eslint, необхідно виконувати перед кожним PR та виправляти всі помилки лінтера
 - `npm lint:fix` &mdash; та ж перевірка лінтера, але з автоматичними виправленнями простих помилок
 
-### npm
+### yarn
 
 - `yarn start` &mdash; старт сервера в режимі production
 - `yarn start:dev` &mdash; старт сервера в режимі розробки (development)
