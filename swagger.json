@@ -3,11 +3,7 @@
   "info": {
     "version": "1.1.0",
     "title": "TaskPRO",
-    "description": "APIservice task manager - TaskPRO",
-    "license": {
-      "name": "MIT",
-      "url": "https://opensource.org/licenses/MIT"
-    }
+    "description": "TaskPro Backend API\n This is the documentation of the TaskPro Backend API project, which provides an API for interacting with the TaskPro application.\n \nThis project implements the server part of the TaskPro application. It is built on Node.js, using the Express.js framework to implement the API and Mongoose to interact with the MongoDB database.\n \n _\n \n Requirements\n\n Before starting work with the project, make sure that the following tools are installed on your computer:\n Node.js (version 12 or higher) \n \n _\n \n Installation\n \n Clone this repository to your local computer.\n Open a terminal and navigate to the root of your project.\n Run npm install or yarn to install project dependencies.\nConfiguration\nCreate an .env file in the root of your project.\nSpecify the required environment variables in this file."
   },
   "consumes": ["application/json", "multipart/form-data"],
   "produces": ["application/json", "multipart/form-data"],
@@ -52,13 +48,43 @@
             }
           },
           "400": {
-            "description": "User creation error."
+            "description": "User creation error.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 400,
+                  "message": "Message error",
+                  "data": "Not found"
+                }
+              }
+            }
           },
           "409": {
-            "description": "Email already in use."
+            "description": "Email already in use..",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 409,
+                  "message": "Email already in use",
+                  "data": "Not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Server error"
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 500,
+                  "message": "Server error",
+                  "data": "Not found"
+                }
+              }
+            }
           }
         }
       }
@@ -92,10 +118,43 @@
             }
           },
           "400": {
-            "description": "Login error."
+            "description": "User creation error.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 400,
+                  "message": "Message error",
+                  "data": "Not found"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Email already in use..",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 401,
+                  "message": "Email or password invalid",
+                  "data": "Not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Server error"
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 500,
+                  "message": "Server error",
+                  "data": "Not found"
+                }
+              }
+            }
           }
         }
       }
@@ -122,10 +181,30 @@
           },
 
           "401": {
-            "description": "Missing header with authorization token."
+            "description": "Email already in use..",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 401,
+                  "message": "Email or password invalid",
+                  "data": "Not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Server error"
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 500,
+                  "message": "Server error",
+                  "data": "Not found"
+                }
+              }
+            }
           }
         }
       }
@@ -157,10 +236,30 @@
             }
           },
           "401": {
-            "description": "Missing header with authorization token."
+            "description": "Email already in use..",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 401,
+                  "message": "Email or password invalid",
+                  "data": "Not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Server error"
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 500,
+                  "message": "Server error",
+                  "data": "Not found"
+                }
+              }
+            }
           }
         }
       }
@@ -203,14 +302,44 @@
               }
             }
           },
-          "401": {
-            "description": "Missing header with authorization token."
-          },
           "400": {
-            "description": "Bad request"
+            "description": "User creation error.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 400,
+                  "message": "Message error",
+                  "data": "Not found"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Email already in use..",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 401,
+                  "message": "Email or password invalid",
+                  "data": "Not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Server error"
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 500,
+                  "message": "Server error",
+                  "data": "Not found"
+                }
+              }
+            }
           }
         }
       }
@@ -251,14 +380,44 @@
               }
             }
           },
-          "401": {
-            "description": "Missing header with authorization token."
-          },
           "400": {
-            "description": "Bad request"
+            "description": "User creation error.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 400,
+                  "message": "Message error",
+                  "data": "Not found"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Email already in use..",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 401,
+                  "message": "Email or password invalid",
+                  "data": "Not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Server error"
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 500,
+                  "message": "Server error",
+                  "data": "Not found"
+                }
+              }
+            }
           }
         }
       }
@@ -299,14 +458,44 @@
               }
             }
           },
-          "401": {
-            "description": "Missing header with authorization token."
-          },
           "400": {
-            "description": "Bad request"
+            "description": "User creation error.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 400,
+                  "message": "Message error",
+                  "data": "Not found"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Email already in use..",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 401,
+                  "message": "Email or password invalid",
+                  "data": "Not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Server error"
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 500,
+                  "message": "Server error",
+                  "data": "Not found"
+                }
+              }
+            }
           }
         }
       }
@@ -337,10 +526,30 @@
             }
           },
           "401": {
-            "description": "Missing header with authorization token."
+            "description": "Email already in use..",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 401,
+                  "message": "Email or password invalid",
+                  "data": "Not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Server error"
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 500,
+                  "message": "Server error",
+                  "data": "Not found"
+                }
+              }
+            }
           }
         }
       }
@@ -381,17 +590,58 @@
               }
             }
           },
+
           "400": {
-            "description": "This board name already exists."
+            "description": "User`s id  is invalid.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 400,
+                  "message": "Message error",
+                  "data": "Not found"
+                }
+              }
+            }
           },
           "401": {
-            "description": "Missing header with authorization token."
+            "description": "Email already in use..",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 401,
+                  "message": "Email or password invalid",
+                  "data": "Not found"
+                }
+              }
+            }
           },
           "409": {
-            "description": "This board name already exists."
+            "description": "This board name already exists.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 409,
+                  "message": "This board name already exists.",
+                  "data": "Not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Server error"
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 500,
+                  "message": "Server error",
+                  "data": "Not found"
+                }
+              }
+            }
           }
         }
       }
@@ -439,20 +689,71 @@
               }
             }
           },
-          "401": {
-            "description": "Missing header with authorization token."
-          },
+
           "400": {
-            "description": "Bad request"
+            "description": "Bad request.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 400,
+                  "message": "Message error",
+                  "data": "Not found"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Email already in use..",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 401,
+                  "message": "Email or password invalid",
+                  "data": "Not found"
+                }
+              }
+            }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 401,
+                  "message": "Not found",
+                  "data": "Not found"
+                }
+              }
+            }
           },
           "409": {
-            "description": "This board name already exists."
+            "description": "This board name already exists.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 409,
+                  "message": "This board name already exists.",
+                  "data": "Not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Server error"
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 500,
+                  "message": "Server error",
+                  "data": "Not found"
+                }
+              }
+            }
           }
         }
       }
@@ -489,14 +790,45 @@
               }
             }
           },
+
           "401": {
-            "description": "Missing header with authorization token."
+            "description": "Email already in use..",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 401,
+                  "message": "Email or password invalid",
+                  "data": "Not found"
+                }
+              }
+            }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 401,
+                  "message": "Not found",
+                  "data": "Not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Server error"
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 500,
+                  "message": "Server error",
+                  "data": "Not found"
+                }
+              }
+            }
           }
         }
       }
@@ -534,13 +866,43 @@
             }
           },
           "401": {
-            "description": "Missing header with authorization token."
+            "description": "Email already in use..",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 401,
+                  "message": "Email or password invalid",
+                  "data": "Not found"
+                }
+              }
+            }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 401,
+                  "message": "Not found",
+                  "data": "Not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Server error"
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 500,
+                  "message": "Server error",
+                  "data": "Not found"
+                }
+              }
+            }
           }
         }
       }
@@ -588,17 +950,58 @@
               }
             }
           },
-          "401": {
-            "description": "Missing header with authorization token."
-          },
+
           "400": {
-            "description": "Bad request"
+            "description": "Bad request.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 400,
+                  "message": "Message error",
+                  "data": "Not found"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Email already in use..",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 401,
+                  "message": "Email or password invalid",
+                  "data": "Not found"
+                }
+              }
+            }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 401,
+                  "message": "Not found",
+                  "data": "Not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Server error"
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 500,
+                  "message": "Server error",
+                  "data": "Not found"
+                }
+              }
+            }
           }
         }
       }
@@ -653,17 +1056,57 @@
               }
             }
           },
-          "401": {
-            "description": "Missing header with authorization token."
-          },
           "400": {
-            "description": "Bad request"
+            "description": "Bad request.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 400,
+                  "message": "Message error",
+                  "data": "Not found"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Email already in use..",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 401,
+                  "message": "Email or password invalid",
+                  "data": "Not found"
+                }
+              }
+            }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 401,
+                  "message": "Not found",
+                  "data": "Not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Server error"
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 500,
+                  "message": "Server error",
+                  "data": "Not found"
+                }
+              }
+            }
           }
         }
       }
@@ -707,14 +1150,46 @@
               }
             }
           },
+
           "401": {
-            "description": "Missing header with authorization token."
+            "description": "Email already in use..",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 401,
+                  "message": "Email or password invalid",
+                  "data": "Not found"
+                }
+              }
+            }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 401,
+                  "message": "Not found",
+                  "data": "Not found"
+                }
+              }
+            }
           },
+
           "500": {
-            "description": "Server error"
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 500,
+                  "message": "Server error",
+                  "data": "Not found"
+                }
+              }
+            }
           }
         }
       }
@@ -759,14 +1234,45 @@
               }
             }
           },
+
           "401": {
-            "description": "Missing header with authorization token."
+            "description": "Email already in use..",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 401,
+                  "message": "Email or password invalid",
+                  "data": "Not found"
+                }
+              }
+            }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 401,
+                  "message": "Not found",
+                  "data": "Not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Server error"
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 500,
+                  "message": "Server error",
+                  "data": "Not found"
+                }
+              }
+            }
           }
         }
       }
@@ -821,17 +1327,57 @@
               }
             }
           },
-          "401": {
-            "description": "Missing header with authorization token."
-          },
           "400": {
-            "description": "Bad request"
+            "description": "Bad request.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 400,
+                  "message": "Message error",
+                  "data": "Not found"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Email already in use..",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 401,
+                  "message": "Email or password invalid",
+                  "data": "Not found"
+                }
+              }
+            }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 401,
+                  "message": "Not found",
+                  "data": "Not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Server error"
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 500,
+                  "message": "Server error",
+                  "data": "Not found"
+                }
+              }
+            }
           }
         }
       }
@@ -893,17 +1439,58 @@
               }
             }
           },
-          "401": {
-            "description": "Missing header with authorization token."
-          },
+
           "400": {
-            "description": "Bad request"
+            "description": "Bad request.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 400,
+                  "message": "Message error",
+                  "data": "Not found"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Email already in use..",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 401,
+                  "message": "Email or password invalid",
+                  "data": "Not found"
+                }
+              }
+            }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 401,
+                  "message": "Not found",
+                  "data": "Not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Server error"
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 500,
+                  "message": "Server error",
+                  "data": "Not found"
+                }
+              }
+            }
           }
         }
       }
@@ -954,17 +1541,58 @@
               }
             }
           },
-          "401": {
-            "description": "Missing header with authorization token."
-          },
+
           "400": {
-            "description": "Bad request"
+            "description": "Bad request.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 400,
+                  "message": "Message error",
+                  "data": "Not found"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Email already in use..",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 401,
+                  "message": "Email or password invalid",
+                  "data": "Not found"
+                }
+              }
+            }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 401,
+                  "message": "Not found",
+                  "data": "Not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Server error"
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "error",
+                  "code": 500,
+                  "message": "Server error",
+                  "data": "Not found"
+                }
+              }
+            }
           }
         }
       }

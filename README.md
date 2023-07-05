@@ -32,7 +32,7 @@ https://taskproapi.onrender.com
 ## API
 
 Детальний опис запитів для взаємодії, описаний в
-[документації:](https://taskproapi.onrender.com/api-docs).
+[документації](https://taskproapi.onrender.com/api-docs):
 
 ```
 https://taskproapi.onrender.com/api-docs
