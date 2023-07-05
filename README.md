@@ -1,8 +1,6 @@
 # taskPro-backend-project
 
-# YourPet Backend API
-
-Це репозиторій проекту YourPet Backend API, який надає API для взаємодії з додатком TaskPro.
+Це репозиторій проекту TaskPro Backend API, який надає API для взаємодії з додатком TaskPro.
 
 ## Огляд проекту
 
@@ -38,6 +36,8 @@ https://taskproapi.onrender.com
 ```
 https://taskproapi.onrender.com/api-docs
 ```
+
+![Api](./assets/api-doc-taskPro.png)
 
 ## Server commands:
 
