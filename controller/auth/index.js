@@ -7,6 +7,7 @@ const logout = require("./logout");
 const updateUser = require("./updateUser");
 const updateThema = require("./updateThema");
 const support = require("./support");
+const wakeUpServer = require("./wakeUpServer");
 
 module.exports = {
   register: controllerWrapper(register),
@@ -16,4 +17,5 @@ module.exports = {
   updateUser: controllerWrapper(updateUser),
   updateThema: controllerWrapper(updateThema),
   support: controllerWrapper(support),
+  wakeUpServer: controllerWrapper(wakeUpServer),
 };

@@ -11,6 +11,7 @@ const {
   updateUser,
   updateThema,
   support,
+  wakeUpServer,
 } = require("../../controller/auth");
 
 router.post("/register", validateBody(schemas.registerSchema), register);
@@ -36,5 +37,6 @@ router.post(
   validateBody(schemas.supportSchema),
   support
 );
+router.get("/wakeupserver", wakeUpServer);
 
 module.exports = router;
